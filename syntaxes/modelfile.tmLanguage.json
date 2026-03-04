@@ -118,7 +118,7 @@
 
     "separator": {
       "match": "^[ \\t]*(?:[-=*_][ \\t]*){3,}[ \\t]*(?:\\S.*?[ \\t]*(?:[-=*_][ \\t]*){3,})?[ \\t]*$",
-      "name": "markup.rule.modelfile"
+      "name": "markup.heading.separator.modelfile"
     },
 
     "escape": {

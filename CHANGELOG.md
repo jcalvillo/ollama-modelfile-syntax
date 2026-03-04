@@ -2,10 +2,15 @@
 
 All notable changes to this extension will be documented here.
 
+## [0.1.3] - 2026-03-04
+
+### Fixed
+- Separator highlighting now uses `markup.heading` scope for reliable coloring across themes
+
 ## [0.1.2] - 2026-03-04
 
 ### Added
-- Highlight separator lines (`---`, `===`, `***`, `___`, `--- Title ---`) inside triple-quoted strings
+- Highlight separator lines (`---`, `===`, `***`, `___`, `--- Title ---`) inside triple-quoted strings using the `markup.heading` scope for reliable cross-theme coloring
 
 ## [0.1.1] - 2026-03-04
 
