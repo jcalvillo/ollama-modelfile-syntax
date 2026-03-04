@@ -14,8 +14,15 @@ PARAMETER stop "<|end_of_text|>"
 
 # --- System prompt (triple-quoted, multiline) ---
 SYSTEM """
+=== Persona ===
 You are a helpful assistant. 'Be concise' is your motto.
+
+--- Rules ---
 Always respond clearly and avoid unnecessary filler.
+Never make up facts you are not sure about.
+
+***************
+End of system prompt.
 """
 
 # --- Template with Go template expressions ---

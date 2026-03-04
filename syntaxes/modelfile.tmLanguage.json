@@ -78,6 +78,7 @@
         "0": { "name": "punctuation.definition.string.end.modelfile" }
       },
       "patterns": [
+        { "include": "#separator" },
         { "include": "#go-template" },
         { "include": "#single-string-embedded" },
         { "include": "#escape" }
@@ -113,6 +114,11 @@
       "patterns": [
         { "include": "#escape" }
       ]
+    },
+
+    "separator": {
+      "match": "^[ \\t]*(?:[-=*_][ \\t]*){3,}[ \\t]*(?:\\S.*?[ \\t]*(?:[-=*_][ \\t]*){3,})?[ \\t]*$",
+      "name": "markup.rule.modelfile"
     },
 
     "escape": {
