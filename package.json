@@ -1,0 +1,57 @@
+{
+  "name": "ollama-modelfile-syntax",
+  "displayName": "Ollama Modelfile Syntax",
+  "description": "Syntax highlighting for Ollama Modelfiles",
+  "version": "0.1.0",
+  "publisher": "jcalvillo",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "ollama",
+    "modelfile",
+    "llm",
+    "ai",
+    "syntax",
+    "highlighting"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jcalvillo/ollama-modelfile-syntax"
+  },
+  "bugs": {
+    "url": "https://github.com/jcalvillo/ollama-modelfile-syntax/issues"
+  },
+  "homepage": "https://github.com/jcalvillo/ollama-modelfile-syntax#readme",
+  "contributes": {
+    "languages": [
+      {
+        "id": "modelfile",
+        "aliases": [
+          "Modelfile",
+          "Ollama Modelfile"
+        ],
+        "filenames": [
+          "Modelfile"
+        ],
+        "filenamePatterns": [
+          "Modelfile.*",
+          "Modelfile-*",
+          "Modelfile_*"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "modelfile",
+        "scopeName": "source.modelfile",
+        "path": "./syntaxes/modelfile.tmLanguage.json"
+      }
+    ]
+  }
+}

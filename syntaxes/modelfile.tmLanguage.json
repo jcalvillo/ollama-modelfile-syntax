@@ -1,0 +1,158 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Modelfile",
+  "scopeName": "source.modelfile",
+  "patterns": [
+    { "include": "#triple-string" },
+    { "include": "#double-string" },
+    { "include": "#comment" },
+    { "include": "#from-instruction" },
+    { "include": "#parameter-instruction" },
+    { "include": "#message-instruction" },
+    { "include": "#keyword-instruction" },
+    { "include": "#go-template" },
+    { "include": "#number" }
+  ],
+  "repository": {
+    "comment": {
+      "match": "\\s*#.*$",
+      "name": "comment.line.number-sign.modelfile"
+    },
+
+    "from-instruction": {
+      "match": "(?i)^(FROM)\\s+(\\S+)",
+      "captures": {
+        "1": { "name": "keyword.control.from.modelfile" },
+        "2": { "name": "entity.name.type.modelfile" }
+      }
+    },
+
+    "parameter-instruction": {
+      "begin": "(?i)^(PARAMETER)\\s+",
+      "end": "$",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.parameter.modelfile" }
+      },
+      "patterns": [
+        {
+          "match": "(?i)\\b(mirostat|mirostat_eta|mirostat_tau|num_ctx|repeat_last_n|repeat_penalty|temperature|seed|stop|tfs_z|num_predict|top_k|top_p|min_p|numa|num_batch|num_gpu|main_gpu|low_vram|vocab_only|use_mmap|num_thread|penalize_newline|presence_penalty|frequency_penalty)\\b",
+          "name": "entity.other.attribute-name.modelfile"
+        },
+        { "include": "#triple-string" },
+        { "include": "#double-string" },
+        { "include": "#number" }
+      ]
+    },
+
+    "message-instruction": {
+      "begin": "(?i)^(MESSAGE)\\s+",
+      "end": "$",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.message.modelfile" }
+      },
+      "patterns": [
+        {
+          "match": "(?i)\\b(system|user|assistant)\\b",
+          "name": "entity.name.tag.role.modelfile"
+        },
+        { "include": "#triple-string" },
+        { "include": "#double-string" }
+      ]
+    },
+
+    "keyword-instruction": {
+      "match": "(?i)^(TEMPLATE|SYSTEM|ADAPTER|LICENSE|REQUIRES)\\b",
+      "captures": {
+        "1": { "name": "keyword.control.modelfile" }
+      }
+    },
+
+    "triple-string": {
+      "begin": "\"\"\"",
+      "end": "\"\"\"",
+      "name": "string.quoted.triple.modelfile",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.string.begin.modelfile" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.string.end.modelfile" }
+      },
+      "patterns": [
+        { "include": "#go-template" },
+        { "include": "#single-string-embedded" },
+        { "include": "#escape" }
+      ]
+    },
+
+    "double-string": {
+      "begin": "\"",
+      "end": "\"",
+      "name": "string.quoted.double.modelfile",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.string.begin.modelfile" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.string.end.modelfile" }
+      },
+      "patterns": [
+        { "include": "#escape" },
+        { "include": "#single-string-embedded" }
+      ]
+    },
+
+    "single-string-embedded": {
+      "begin": "'",
+      "end": "'",
+      "name": "string.quoted.single.embedded.modelfile",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.string.begin.modelfile" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.string.end.modelfile" }
+      },
+      "patterns": [
+        { "include": "#escape" }
+      ]
+    },
+
+    "escape": {
+      "match": "\\\\[\\\\\"'nrtbf0]",
+      "name": "constant.character.escape.modelfile"
+    },
+
+    "number": {
+      "match": "(?<![\\w.])(-?\\d+(?:\\.\\d+)?)(?![\\w.])",
+      "name": "constant.numeric.modelfile"
+    },
+
+    "go-template": {
+      "begin": "\\{\\{-?",
+      "end": "-?\\}\\}",
+      "name": "meta.template.expression.modelfile",
+      "beginCaptures": {
+        "0": { "name": "punctuation.section.embedded.begin.modelfile" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.section.embedded.end.modelfile" }
+      },
+      "patterns": [
+        {
+          "match": "\\.(System|Prompt|Response|Messages|Suffix|First)\\b",
+          "name": "variable.language.go-template.modelfile"
+        },
+        {
+          "match": "\\b(if|else|end|range|with|block|define|template|call|and|or|not|len|index|print|printf|println|slice|urlquery)\\b",
+          "name": "keyword.control.go-template.modelfile"
+        },
+        {
+          "match": "\"[^\"]*\"",
+          "name": "string.quoted.double.go-template.modelfile"
+        },
+        {
+          "match": "\\b[A-Za-z_][A-Za-z0-9_]*\\b",
+          "name": "variable.other.go-template.modelfile"
+        }
+      ]
+    }
+  }
+}

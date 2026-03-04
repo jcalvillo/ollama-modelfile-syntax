@@ -1,0 +1,16 @@
+# Extension builds
+*.vsix
+
+# Dependencies (if ever added)
+node_modules/
+
+# VS Code test runner output
+.vscode-test/
+out/
+dist/
+
+# macOS
+.DS_Store
+
+# Editor directories
+.idea/
