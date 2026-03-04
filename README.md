@@ -22,34 +22,9 @@ The extension automatically activates for files matching:
 
 ## Example
 
-```
-# Example Modelfile
-FROM llama3.2
+![Syntax highlighting example](examples/Modelfile.example.png)
 
-PARAMETER temperature 0.8
-PARAMETER num_ctx 4096
-PARAMETER stop "<|eot_id|>"
-
-SYSTEM """
-You are a helpful assistant. 'Be concise' is your motto.
-"""
-
-TEMPLATE """
-{{- if .System }}<|start_header_id|>system<|end_header_id|>
-{{ .System }}<|eot_id|>{{- end }}
-<|start_header_id|>user<|end_header_id|>
-{{ .Prompt }}<|eot_id|>
-<|start_header_id|>assistant<|end_header_id|>
-{{ .Response }}<|eot_id|>
-"""
-
-MESSAGE user "Hello, how are you?"
-MESSAGE assistant "I'm doing well, thanks for asking!"
-
-LICENSE """
-MIT License
-"""
-```
+> See [`examples/Modelfile.example`](examples/Modelfile.example) for the full source.
 
 ## Installation
 

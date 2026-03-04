@@ -1,0 +1,49 @@
+# Example Modelfile — exercises all syntax highlighting features
+
+FROM llama3.2
+
+# --- Parameters ---
+PARAMETER temperature 0.8
+PARAMETER num_ctx 4096
+PARAMETER top_k 40
+PARAMETER top_p 0.9
+PARAMETER repeat_penalty 1.1
+PARAMETER seed 42
+PARAMETER stop "<|eot_id|>"
+PARAMETER stop "<|end_of_text|>"
+
+# --- System prompt (triple-quoted, multiline) ---
+SYSTEM """
+You are a helpful assistant. 'Be concise' is your motto.
+Always respond clearly and avoid unnecessary filler.
+"""
+
+# --- Template with Go template expressions ---
+TEMPLATE """
+{{- if .System }}<|start_header_id|>system<|end_header_id|>
+{{ .System }}<|eot_id|>{{- end }}
+{{- range .Messages }}<|start_header_id|>{{ .Role }}<|end_header_id|>
+{{ .Content }}<|eot_id|>{{- end }}
+<|start_header_id|>assistant<|end_header_id|>
+{{ .Response }}<|eot_id|>
+"""
+
+# --- Conversation history ---
+MESSAGE user "Hello! Can you help me with something?"
+MESSAGE assistant "Of course! What do you need help with?"
+MESSAGE user "Explain what 'recursion' means in programming."
+
+# --- Adapter (LoRA) ---
+ADAPTER ./adapters/my-lora-adapter.gguf
+
+# --- Version requirement ---
+REQUIRES >= 0.1.24
+
+# --- License ---
+LICENSE """
+MIT License
+
+Copyright (c) 2026 jcalvillo
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software to use, copy, modify, and distribute it freely.
+"""
