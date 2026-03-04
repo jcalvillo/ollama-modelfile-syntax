@@ -24,7 +24,6 @@ The extension automatically activates for files matching:
 
 ![Syntax highlighting example](examples/Modelfile.example.png)
 
-> See [`examples/Modelfile.example`](examples/Modelfile.example) for the full source.
 
 ## Installation
 

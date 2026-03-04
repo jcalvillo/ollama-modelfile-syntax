@@ -1,4 +1,4 @@
-# Example Modelfile — exercises all syntax highlighting features
+# Modelfile.example
 
 FROM llama3.2
 

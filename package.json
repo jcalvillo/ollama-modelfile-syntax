@@ -2,7 +2,7 @@
   "name": "ollama-modelfile-syntax",
   "displayName": "Ollama Modelfile Syntax",
   "description": "Syntax highlighting for Ollama Modelfiles",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "jcalvillo",
   "license": "MIT",
   "engines": {
