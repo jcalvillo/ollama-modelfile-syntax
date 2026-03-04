@@ -53,22 +53,27 @@ MIT License
 
 ## Installation
 
-### Local install (VSCodium / VSCode)
+### Option 1 — Open VSX Registry (VSCodium marketplace)
 
-1. Package the extension:
-   ```bash
-   npm install -g @vscode/vsce
-   vsce package
-   ```
-2. Install the generated `.vsix` file:
-   - Open VSCodium
-   - Open the Command Palette (`Ctrl+Shift+P`)
-   - Run **Extensions: Install from VSIX...**
-   - Select the `.vsix` file
+Search for **Ollama Modelfile Syntax** directly in the VSCodium Extensions panel, or visit the extension page on [open-vsx.org](https://open-vsx.org/extension/jcalvillo/ollama-modelfile-syntax).
 
-### Open VSX Registry (VSCodium marketplace)
+### Option 2 — Install from GitHub Releases (manual VSIX)
 
-See [PUBLISHING.md](PUBLISHING.md) for steps to publish to the Open VSX Registry.
+1. Download the latest `.vsix` file from the [Releases page](https://github.com/jcalvillo/ollama-modelfile-syntax/releases)
+2. Open VSCodium (or VS Code)
+3. Open the Command Palette (`Ctrl+Shift+P`)
+4. Run **Extensions: Install from VSIX...**
+5. Select the downloaded `.vsix` file
+
+### Option 3 — Build from source
+
+```bash
+git clone https://github.com/jcalvillo/ollama-modelfile-syntax.git
+cd ollama-modelfile-syntax
+npm install -g @vscode/vsce
+vsce package
+```
+Then install the generated `.vsix` as described in Option 2.
 
 ## License
 

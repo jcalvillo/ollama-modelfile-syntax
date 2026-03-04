@@ -1,5 +1,8 @@
-# Extension builds
+# Extension builds (distributed via GitHub Releases, not committed)
 *.vsix
+
+# Internal docs
+PUBLISHING.md
 
 # Dependencies (if ever added)
 node_modules/
